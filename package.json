@@ -1,0 +1,37 @@
+{
+  "name": "boxhaggle",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "BOXHAGGLE: an AI agent haggles with The Broker over paid x402 rounds, settled through PayBox.",
+  "license": "MIT",
+  "workspaces": [
+    "packages/core",
+    "apps/merchant",
+    "apps/agent",
+    "apps/web",
+    "apps/plugin"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "npm run build -w @boxhaggle/core && npm run build -w @boxhaggle/merchant -w @boxhaggle/agent -w @boxhaggle/web -w @boxhaggle/plugin",
+    "test": "npm run test -w @boxhaggle/core -w @boxhaggle/merchant -w @boxhaggle/agent -w @boxhaggle/web -w @boxhaggle/plugin",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "check:text": "node scripts/check-text.mjs",
+    "dev:merchant": "npm run dev -w @boxhaggle/merchant",
+    "dev:web": "npm run dev -w @boxhaggle/web",
+    "agent": "npm run start -w @boxhaggle/agent",
+    "agent:mock": "npm run mock -w @boxhaggle/agent"
+  },
+  "devDependencies": {
+    "@types/node": "24.12.2",
+    "tsx": "4.23.12",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  },
+  "overrides": {
+    "ws": "8.22.0"
+  }
+}

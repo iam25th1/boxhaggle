@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>BOXHAGGLE counter</title>
+  </head>
+  <body>
+    <main class="cx stage" id="stage" data-mood="calm" data-phase="idle" aria-label="The Broker's counter">
+      <header class="cx-top">
+        <p class="wordmark" aria-label="BOXHAGGLE">BOX<span>HAGGLE</span></p>
+        <p class="cx-item" id="cx-item">The Broker's counter</p>
+        <p class="cx-round" id="cx-round">Waiting</p>
+      </header>
+      <section class="cx-wall">
+        <div class="cx-broker broker-mount" id="broker-mount"></div>
+        <div class="cx-talk">
+          <div class="cx-board" id="board-mount"></div>
+          <div class="cx-speech" id="speech-mount"></div>
+        </div>
+      </section>
+      <div class="cx-fuse" id="fuse-mount"></div>
+      <section class="cx-counter">
+        <div class="cx-printer" id="printer-mount"></div>
+        <div class="cx-tray" id="tray-mount"></div>
+        <div class="cx-docket" id="docket-mount"></div>
+      </section>
+      <footer class="cx-foot">
+        <p class="plaque plaque-seal" id="cx-seal">Floor not sealed yet</p>
+        <p class="plaque" id="cx-budget">Budget not set</p>
+      </footer>
+      <div class="cx-reveal" id="cx-reveal" hidden>
+        <div class="cx-reveal-scrim" aria-hidden="true"></div>
+        <div class="cx-reveal-slot" id="reveal-mount"></div>
+      </div>
+      <pre class="cx-fallback" id="cx-fallback" hidden></pre>
+      <div class="sr-only" id="broker-live" aria-live="polite"></div>
+    </main>
+    <script type="module" src="/src/counter/main.ts"></script>
+  </body>
+</html>

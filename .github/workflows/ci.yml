@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.21.0
+      - name: Install (no lifecycle scripts)
+        run: npm ci --ignore-scripts
+      - name: House rules
+        run: npm run check:text
+      - name: Build all workspaces
+        run: npm run build
+      - name: Test all workspaces
+        run: npm test
+      - name: PayBox plugin conformance (starter 1.0.2, Node 24 on Linux)
+        run: npm run test:conformance -w @boxhaggle/plugin
+      - name: No secrets in the web bundle
+        run: |
+          if grep -rEn "pbx_live_[A-Za-z0-9]|pbxk1\.[A-Za-z0-9]{8}|MERCHANT_API_KEY|PAYBOX_API_KEY|PAYBOX_SIGNING_KEY|BEGIN [A-Z ]*PRIVATE KEY" apps/web/dist apps/web/dist-counter; then
+            echo "secret-like string found in the web or counter bundle"; exit 1
+          fi

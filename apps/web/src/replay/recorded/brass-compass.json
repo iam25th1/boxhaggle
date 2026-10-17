@@ -1,0 +1,1221 @@
+{
+  "itemId": "brass-compass",
+  "recordedAt": "2026-10-17T10:56:49.345Z",
+  "source": "apps/agent --mock against a local merchant (FACILITATOR_MODE=local). REPLAY: no real funds moved.",
+  "events": [
+    {
+      "delayMs": 400,
+      "event": {
+        "t": "run.started",
+        "at": 1792234580797,
+        "mode": "replay",
+        "capUsd": 3,
+        "strategy": "spread-closer",
+        "seq": 2
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234580797,
+        "tool": "list_credentials",
+        "seq": 3
+      }
+    },
+    {
+      "delayMs": 661,
+      "event": {
+        "t": "credentials.listed",
+        "at": 1792234581458,
+        "wallet": {
+          "present": true,
+          "chain": "EVM",
+          "address": "0x2b5D..F249"
+        },
+        "card": {
+          "present": false
+        },
+        "secret": {
+          "present": true,
+          "name": "boxhaggle merchant key"
+        },
+        "seq": 4
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234581458,
+        "tool": "request_secret",
+        "note": "raw: false (one-time token)",
+        "seq": 5
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234581459,
+        "tool": "request_secret",
+        "requestId": "rq_rep..b278",
+        "status": "success",
+        "outputType": "secret_token",
+        "seq": 6
+      }
+    },
+    {
+      "delayMs": 664,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234582123,
+        "drawer": "secret",
+        "outputType": "secret_token",
+        "note": "one-time token, never shown",
+        "seq": 7
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234582124,
+        "text": "PayBox documents no way for a third-party merchant to redeem a secret_token, so the agent asks for the raw key. It lives in process memory only and is never logged or relayed.",
+        "seq": 8
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234582124,
+        "tool": "request_secret",
+        "note": "raw: true (merchant egress)",
+        "seq": 9
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234582124,
+        "tool": "request_secret",
+        "requestId": "rq_rep..916c",
+        "status": "success",
+        "outputType": "raw_secret",
+        "seq": 10
+      }
+    },
+    {
+      "delayMs": 664,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234582788,
+        "drawer": "secret",
+        "outputType": "raw_secret",
+        "note": "held in process memory only",
+        "seq": 11
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "session.opened",
+        "at": 1792234582816,
+        "sessionId": "0a8cc3a1b81d038c51b80c9a3dd4d05a",
+        "itemId": "brass-compass",
+        "itemName": "Brass Pocket Compass",
+        "art": "compass",
+        "listPrice": 1800000,
+        "ask": 1800000,
+        "patience": 100,
+        "commitment": "7b6c7d04653963b7bc3fc1db75fd4925b5ef11a7fcc5b48f0c7ee3a532c5993c",
+        "offerFee": 10000,
+        "networks": [
+          "eip155:8453"
+        ],
+        "channel": "sdk",
+        "line": "Late shift, best prices. $1.80.",
+        "seq": 1
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234582821,
+        "text": "Session open for the Brass Pocket Compass at $1.80. Each counter-offer costs $0.01 on Base.",
+        "seq": 12
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234582821,
+        "text": "Opening at 60% of list to find the Broker's range. Offer $1.08.",
+        "seq": 13
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234582829,
+        "tool": "pay_x402",
+        "note": "$0.01 on Base",
+        "seq": 14
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234582832,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..f83b",
+        "status": "pending_signature",
+        "seq": 15
+      }
+    },
+    {
+      "delayMs": 652,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234583484,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..f83b",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 16
+      }
+    },
+    {
+      "delayMs": 652,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234584136,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 19
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234584161,
+        "text": "Broker is irritated at patience 85. Closing 40% of the spread, expecting about 12 cents back. Offer $1.33.",
+        "seq": 20
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "offer.paid",
+        "at": 1792234584162,
+        "round": 1,
+        "offer": 1080000,
+        "fee": 10000,
+        "txRef": "local_c160d52f3f0fee2a033f6613",
+        "network": "base",
+        "seq": 17
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "broker.reply",
+        "at": 1792234584162,
+        "round": 1,
+        "offer": 1080000,
+        "previousAsk": 1800000,
+        "ask": 1720000,
+        "patience": 85,
+        "mood": "irritated",
+        "status": "open",
+        "line": "You keep circling. The Brass Pocket Compass keeps waiting. $1.72.",
+        "seq": 18
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234584162,
+        "tool": "pay_x402",
+        "note": "$0.01 on Base",
+        "seq": 21
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234584163,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..cefd",
+        "status": "pending_signature",
+        "seq": 22
+      }
+    },
+    {
+      "delayMs": 656,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234584819,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..cefd",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 23
+      }
+    },
+    {
+      "delayMs": 652,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234585471,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 26
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234585477,
+        "text": "Broker is calm at patience 78. Closing 25% of the spread, expecting about 6 cents back. Offer $1.40.",
+        "seq": 27
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "offer.paid",
+        "at": 1792234585478,
+        "round": 2,
+        "offer": 1330000,
+        "fee": 10000,
+        "txRef": "local_e99647c888d8571eb6c0dfbf",
+        "network": "base",
+        "seq": 24
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "broker.reply",
+        "at": 1792234585478,
+        "round": 2,
+        "offer": 1330000,
+        "previousAsk": 1720000,
+        "ask": 1610000,
+        "patience": 78,
+        "mood": "calm",
+        "status": "open",
+        "line": "Coffee is free. The Brass Pocket Compass is $1.61.",
+        "seq": 25
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234585478,
+        "tool": "pay_x402",
+        "note": "$0.01 on Base",
+        "seq": 28
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234585479,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..db76",
+        "status": "pending_signature",
+        "seq": 29
+      }
+    },
+    {
+      "delayMs": 660,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234586139,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..db76",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 30
+      }
+    },
+    {
+      "delayMs": 660,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234586799,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 33
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234586805,
+        "text": "Broker is calm at patience 74. Closing 25% of the spread, expecting about 6 cents back. Offer $1.43.",
+        "seq": 34
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "offer.paid",
+        "at": 1792234586806,
+        "round": 3,
+        "offer": 1400000,
+        "fee": 10000,
+        "txRef": "local_8328704bcf30d860adcf898e",
+        "network": "base",
+        "seq": 31
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "broker.reply",
+        "at": 1792234586806,
+        "round": 3,
+        "offer": 1400000,
+        "previousAsk": 1610000,
+        "ask": 1550000,
+        "patience": 74,
+        "mood": "calm",
+        "status": "open",
+        "line": "The ledger says $1.55. The ledger is rarely wrong.",
+        "seq": 32
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234586806,
+        "tool": "pay_x402",
+        "note": "$0.01 on Base",
+        "seq": 35
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234586807,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..a524",
+        "status": "pending_signature",
+        "seq": 36
+      }
+    },
+    {
+      "delayMs": 658,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234587465,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..a524",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 37
+      }
+    },
+    {
+      "delayMs": 651,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234588116,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 40
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234588121,
+        "text": "Broker is amused at patience 71. Closing 20% of the spread, expecting about 3 cents back. Offer $1.44.",
+        "seq": 41
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "offer.paid",
+        "at": 1792234588122,
+        "round": 4,
+        "offer": 1430000,
+        "fee": 10000,
+        "txRef": "local_853523e2d83fd4639f5af0e9",
+        "network": "base",
+        "seq": 38
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "broker.reply",
+        "at": 1792234588122,
+        "round": 4,
+        "offer": 1430000,
+        "previousAsk": 1550000,
+        "ask": 1490000,
+        "patience": 71,
+        "mood": "amused",
+        "status": "open",
+        "line": "Clever. I will give you that and not much else. $1.49.",
+        "seq": 39
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234588122,
+        "tool": "pay_x402",
+        "note": "$0.01 on Base",
+        "seq": 42
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234588123,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..762c",
+        "status": "pending_signature",
+        "seq": 43
+      }
+    },
+    {
+      "delayMs": 659,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234588782,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..762c",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 44
+      }
+    },
+    {
+      "delayMs": 652,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234589434,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 47
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234589440,
+        "text": "Broker is amused at patience 68. Closing 20% of the spread, expecting about 1 cents back. Offer $1.45.",
+        "seq": 48
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234589440,
+        "tool": "pay_x402",
+        "note": "$0.01 on Base",
+        "seq": 49
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "offer.paid",
+        "at": 1792234589441,
+        "round": 5,
+        "offer": 1440000,
+        "fee": 10000,
+        "txRef": "local_abe85d103fd5499e674d0863",
+        "network": "base",
+        "seq": 45
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "broker.reply",
+        "at": 1792234589441,
+        "round": 5,
+        "offer": 1440000,
+        "previousAsk": 1490000,
+        "ask": 1470000,
+        "patience": 68,
+        "mood": "amused",
+        "status": "open",
+        "line": "Keep this up and we both go home happy. $1.47.",
+        "seq": 46
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234589441,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..3766",
+        "status": "pending_signature",
+        "seq": 50
+      }
+    },
+    {
+      "delayMs": 658,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234590099,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..3766",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 51
+      }
+    },
+    {
+      "delayMs": 665,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234590764,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 54
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234590769,
+        "text": "Concessions have stalled. Paying the ask. Offer $1.46.",
+        "seq": 55
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "offer.paid",
+        "at": 1792234590770,
+        "round": 6,
+        "offer": 1450000,
+        "fee": 10000,
+        "txRef": "local_2f678875c864f6a44ae9e30a",
+        "network": "base",
+        "seq": 52
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "broker.reply",
+        "at": 1792234590770,
+        "round": 6,
+        "offer": 1450000,
+        "previousAsk": 1470000,
+        "ask": 1460000,
+        "patience": 65,
+        "mood": "amused",
+        "status": "open",
+        "line": "My grandmother would have taken $1.45. I am not my grandmother. $1.46.",
+        "seq": 53
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234590770,
+        "tool": "pay_x402",
+        "note": "$0.01 on Base",
+        "seq": 56
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234590771,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..d01b",
+        "status": "pending_signature",
+        "seq": 57
+      }
+    },
+    {
+      "delayMs": 657,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234591428,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..d01b",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 58
+      }
+    },
+    {
+      "delayMs": 651,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234592079,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 61
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234592084,
+        "tool": "get_portfolio",
+        "note": "USDC on Base",
+        "seq": 62
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "offer.paid",
+        "at": 1792234592085,
+        "round": 7,
+        "offer": 1460000,
+        "fee": 10000,
+        "txRef": "local_9c06f89269658b47aa20f4f0",
+        "network": "base",
+        "seq": 59
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "broker.reply",
+        "at": 1792234592085,
+        "round": 7,
+        "offer": 1460000,
+        "previousAsk": 1460000,
+        "ask": 1460000,
+        "patience": 65,
+        "mood": "sold",
+        "status": "sold",
+        "line": "Stamp it. $1.46, and not a cent less.",
+        "seq": 60
+      }
+    },
+    {
+      "delayMs": 327,
+      "event": {
+        "t": "funds.checked",
+        "at": 1792234592412,
+        "need": 1460000,
+        "have": 400000,
+        "asset": "USDC",
+        "network": "Base",
+        "ok": false,
+        "seq": 63
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234592412,
+        "tool": "get_portfolio",
+        "note": "USDC on Ethereum",
+        "seq": 64
+      }
+    },
+    {
+      "delayMs": 331,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234592743,
+        "tool": "discover_tokens",
+        "note": "USDC on Base",
+        "seq": 65
+      }
+    },
+    {
+      "delayMs": 651,
+      "event": {
+        "t": "swap.quote",
+        "at": 1792234593394,
+        "fromSymbol": "USDC",
+        "fromChain": "eip155:1",
+        "toSymbol": "USDC",
+        "toChain": "eip155:8453",
+        "amountIn": "1000000",
+        "seq": 66
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234593394,
+        "text": "Funds are on the wrong chain. Bridging USDC on Ethereum to Base.",
+        "seq": 67
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234593394,
+        "tool": "request_swap",
+        "note": "cross-chain",
+        "seq": 68
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234593394,
+        "tool": "request_swap",
+        "requestId": "rq_rep..6717",
+        "status": "pending_signature",
+        "seq": 69
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "swap.status",
+        "at": 1792234593394,
+        "status": "pending_signature",
+        "requestId": "rq_rep..6717",
+        "seq": 70
+      }
+    },
+    {
+      "delayMs": 664,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234594058,
+        "tool": "request_swap",
+        "requestId": "rq_rep..6717",
+        "status": "pending_confirmation",
+        "seq": 71
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "swap.status",
+        "at": 1792234594058,
+        "status": "pending_confirmation",
+        "requestId": "rq_rep..6717",
+        "seq": 72
+      }
+    },
+    {
+      "delayMs": 664,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234594722,
+        "tool": "request_swap",
+        "requestId": "rq_rep..6717",
+        "status": "pending_settlement",
+        "seq": 73
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "swap.status",
+        "at": 1792234594722,
+        "status": "pending_settlement",
+        "requestId": "rq_rep..6717",
+        "seq": 74
+      }
+    },
+    {
+      "delayMs": 665,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234595387,
+        "tool": "request_swap",
+        "requestId": "rq_rep..6717",
+        "status": "pending_settlement",
+        "seq": 75
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "swap.status",
+        "at": 1792234595387,
+        "status": "pending_settlement",
+        "requestId": "rq_rep..6717",
+        "seq": 76
+      }
+    },
+    {
+      "delayMs": 665,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234596052,
+        "tool": "request_swap",
+        "requestId": "rq_rep..6717",
+        "status": "success",
+        "outputType": "tx_hash",
+        "seq": 77
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "swap.status",
+        "at": 1792234596053,
+        "status": "success",
+        "requestId": "rq_rep..6717",
+        "seq": 78
+      }
+    },
+    {
+      "delayMs": 652,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234596705,
+        "tool": "get_portfolio",
+        "note": "after swap",
+        "seq": 79
+      }
+    },
+    {
+      "delayMs": 332,
+      "event": {
+        "t": "funds.checked",
+        "at": 1792234597037,
+        "need": 1460000,
+        "have": 1395000,
+        "asset": "USDC",
+        "network": "Base",
+        "ok": false,
+        "seq": 80
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234597037,
+        "tool": "get_portfolio",
+        "note": "ETH on Base",
+        "seq": 81
+      }
+    },
+    {
+      "delayMs": 331,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234597368,
+        "tool": "get_buy_link",
+        "note": "20 USD of USDC on Base",
+        "seq": 82
+      }
+    },
+    {
+      "delayMs": 664,
+      "event": {
+        "t": "funds.buylink",
+        "at": 1792234598032,
+        "url": "https://buy.moonpay.com/?currencyCode=usdc_base&baseCurrencyAmount=20&replay=1",
+        "network": "eip155:8453",
+        "currency": "usdc_base",
+        "seq": 83
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234598033,
+        "text": "Waiting for the MoonPay checkout to land in the wallet. Only a balance read counts as arrival.",
+        "seq": 84
+      }
+    },
+    {
+      "delayMs": 808,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234598841,
+        "tool": "get_portfolio",
+        "note": "waiting for funding",
+        "seq": 85
+      }
+    },
+    {
+      "delayMs": 331,
+      "event": {
+        "t": "funds.checked",
+        "at": 1792234599172,
+        "need": 1460000,
+        "have": 1395000,
+        "asset": "USDC",
+        "network": "Base",
+        "ok": false,
+        "seq": 86
+      }
+    },
+    {
+      "delayMs": 810,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234599982,
+        "tool": "get_portfolio",
+        "note": "waiting for funding",
+        "seq": 87
+      }
+    },
+    {
+      "delayMs": 332,
+      "event": {
+        "t": "funds.checked",
+        "at": 1792234600314,
+        "need": 1460000,
+        "have": 21395000,
+        "asset": "USDC",
+        "network": "Base",
+        "ok": true,
+        "seq": 88
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234600314,
+        "text": "Deal at $1.46. Paying the exact price through PayBox. Above the approval threshold this waits for a passkey.",
+        "seq": 89
+      }
+    },
+    {
+      "delayMs": 241,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234600555,
+        "tool": "pay_x402",
+        "note": "$1.46 on Base",
+        "seq": 90
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234600555,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..7611",
+        "status": "pending_approval",
+        "approvalUrl": "https://app.paybox.sh/approvals/replay",
+        "seq": 91
+      }
+    },
+    {
+      "delayMs": 1960,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234602515,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..7611",
+        "status": "pending_signature",
+        "seq": 92
+      }
+    },
+    {
+      "delayMs": 652,
+      "event": {
+        "t": "paybox.envelope",
+        "at": 1792234603167,
+        "tool": "pay_x402",
+        "requestId": "rq_rep..7611",
+        "status": "success",
+        "outputType": "signature",
+        "seq": 93
+      }
+    },
+    {
+      "delayMs": 663,
+      "event": {
+        "t": "vault.opened",
+        "at": 1792234603830,
+        "drawer": "wallet",
+        "outputType": "signature",
+        "note": "x402 payment authorization",
+        "seq": 95
+      }
+    },
+    {
+      "delayMs": 2346,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234606176,
+        "text": "Cleared. Receipt BH-8FAEEC57.",
+        "seq": 96
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "checkout.paid",
+        "at": 1792234606177,
+        "price": 1460000,
+        "txRef": "local_dfdc5978a2a0da3db3feddd4",
+        "network": "base",
+        "receiptId": "BH-8FAEEC57",
+        "seq": 94
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "agent.thought",
+        "at": 1792234606179,
+        "text": "Floor was $1.44. Recomputed the commitment locally: verified.",
+        "seq": 98
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "paybox.call",
+        "at": 1792234606179,
+        "tool": "list_requests",
+        "seq": 99
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "reveal",
+        "at": 1792234606180,
+        "floor": 1440000,
+        "salt": "d962df191379ecde616e52022550ef011aa9b64227bf11cd28bc6fec4a6a92af",
+        "commitment": "7b6c7d04653963b7bc3fc1db75fd4925b5ef11a7fcc5b48f0c7ee3a532c5993c",
+        "verified": true,
+        "seq": 97
+      }
+    },
+    {
+      "delayMs": 663,
+      "event": {
+        "t": "receipt",
+        "at": 1792234606843,
+        "rows": [
+          {
+            "requestId": "rq_rep..7611",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..6717",
+            "kind": "swap",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..d01b",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..3766",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..762c",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..a524",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..db76",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..cefd",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..f83b",
+            "kind": "x402",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..916c",
+            "kind": "secret",
+            "status": "success"
+          },
+          {
+            "requestId": "rq_rep..b278",
+            "kind": "secret",
+            "status": "success"
+          }
+        ],
+        "seq": 100
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "score",
+        "at": 1792234606844,
+        "listPrice": 1800000,
+        "finalPrice": 1460000,
+        "fees": 70000,
+        "rounds": 7,
+        "score": 1530000,
+        "savings": 270000,
+        "seq": 101
+      }
+    },
+    {
+      "delayMs": 120,
+      "event": {
+        "t": "run.ended",
+        "at": 1792234606844,
+        "outcome": "deal",
+        "seq": 102
+      }
+    }
+  ]
+}

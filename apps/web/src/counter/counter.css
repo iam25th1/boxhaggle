@@ -1,0 +1,226 @@
+/* The Broker's counter, sized for a chat iframe: about 320 to 760 px wide,
+   a fixed height per layout. Same seven flat colours as the web app. */
+
+html,
+body {
+  min-height: 0;
+  height: auto;
+  background-color: var(--ink);
+}
+
+body {
+  overflow: hidden;
+}
+
+.cx {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto auto;
+  gap: 8px;
+  height: 600px;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 10px 12px 12px;
+  color: var(--paper);
+  background-color: var(--ink);
+  background-image: var(--tex-wall);
+  overflow: hidden;
+}
+
+.cx-top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--wood);
+}
+
+.cx .wordmark {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--paper);
+}
+
+.cx .wordmark span {
+  color: var(--signal);
+}
+
+.cx-item {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  font-size: 12px;
+  color: var(--grey);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cx-round {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--signal);
+  text-transform: uppercase;
+}
+
+.cx-wall {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 10px;
+  min-height: 0;
+}
+
+.cx-broker {
+  position: relative;
+  min-height: 0;
+  height: 100%;
+}
+
+.cx-broker .broker-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cx-talk {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.cx-board,
+.cx-speech {
+  min-width: 0;
+}
+
+.cx-speech .speech {
+  position: relative;
+  margin: 0;
+}
+
+.cx-fuse {
+  min-width: 0;
+}
+
+.cx-counter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.25fr);
+  align-items: end;
+  gap: 10px;
+  min-height: 184px;
+  padding: 8px;
+  background-color: var(--wood);
+  background-image: var(--tex-wood);
+  border-top: 3px solid var(--ink);
+}
+
+.cx-printer,
+.cx-tray,
+.cx-docket {
+  position: relative;
+  min-width: 0;
+}
+
+.cx-docket .docket {
+  max-height: 196px;
+  overflow: hidden;
+}
+
+.cx-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.cx-foot .plaque {
+  margin: 0;
+}
+
+.cx-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+}
+
+.cx-reveal[hidden] {
+  display: none;
+}
+
+.cx-reveal-scrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(18 18 18 / 88%);
+}
+
+.cx-reveal-slot {
+  position: relative;
+  width: min(100%, 520px);
+  max-height: 100%;
+  overflow-y: auto;
+  /* The web reveal panel is drawn for a full page; scale it to the frame. */
+  zoom: 0.74;
+}
+
+.cx-fallback {
+  position: absolute;
+  inset: auto 8px 8px;
+  z-index: 11;
+  max-height: 55%;
+  margin: 0;
+  padding: 8px;
+  overflow: auto;
+  font-size: 10px;
+  line-height: 1.25;
+  color: var(--ink);
+  background-color: var(--paper);
+  white-space: pre;
+}
+
+.cx-fallback[hidden] {
+  display: none;
+}
+
+@media (max-width: 540px) {
+  /* Stacked: each band takes its natural height, so nothing overlaps. */
+  .cx {
+    height: auto;
+    grid-template-rows: auto auto auto auto auto;
+    padding: 8px;
+  }
+
+  .cx-wall {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 200px auto;
+  }
+
+  .cx-counter {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+    row-gap: 12px;
+    /* Headroom for tickets rising out of the printer. */
+    padding-top: 96px;
+  }
+
+  .cx-docket {
+    grid-column: 1 / -1;
+  }
+
+  .cx-reveal-slot {
+    zoom: 0.7;
+  }
+}

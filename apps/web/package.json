@@ -1,0 +1,26 @@
+{
+  "name": "@boxhaggle/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "BOXHAGGLE spectator UI: The Broker's Counter.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json --noEmit && vite build && npm run build:counter",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "preview": "vite preview",
+    "start": "node serve.mjs",
+    "test": "vitest run",
+    "build:counter": "vite build --config vite.counter.config.ts && node scripts/inline-counter.mjs"
+  },
+  "dependencies": {
+    "@boxhaggle/core": "0.1.0",
+    "animejs": "4.5.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.1",
+    "@modelcontextprotocol/core": "2.3.1",
+    "@modelcontextprotocol/ext-apps": "2.0.3",
+    "vite": "8.3.4"
+  }
+}

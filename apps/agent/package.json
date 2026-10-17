@@ -1,0 +1,23 @@
+{
+  "name": "@boxhaggle/agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "BOXHAGGLE haggling agent driven by the PayBox SDK.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/index.js",
+    "mock": "node dist/index.js --mock",
+    "test": "vitest run",
+    "start:env": "node --env-file=.env dist/index.js",
+    "mock:env": "node --env-file=.env dist/index.js --mock"
+  },
+  "dependencies": {
+    "@boxhaggle/core": "0.1.0",
+    "@paybox-sh/sdk": "2.2.0",
+    "viem": "2.57.7",
+    "zod": "4.4.3"
+  }
+}

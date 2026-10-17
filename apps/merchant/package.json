@@ -1,0 +1,25 @@
+{
+  "name": "@boxhaggle/merchant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The Broker: BOXHAGGLE x402 merchant service.",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "start:env": "node --env-file=.env dist/index.js"
+  },
+  "dependencies": {
+    "@boxhaggle/core": "0.1.0",
+    "@hono/node-server": "2.1.5",
+    "@modelcontextprotocol/server": "2.0.0",
+    "@x402/core": "2.28.0",
+    "hono": "4.13.13",
+    "viem": "2.57.7",
+    "zod": "4.4.3"
+  }
+}

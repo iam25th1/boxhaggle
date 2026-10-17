@@ -1,0 +1,32 @@
+/* The Broker's Counter: palette, type and textures.
+   Seven flat colours, no blends. Texture is SVG noise or hatching only. */
+
+:root {
+  --ink: #121212;
+  --wood: #3a2a1e;
+  --paper: #f2ebdd;
+  --signal: #ff5a1f;
+  --ledger: #1f7a4d;
+  --stamp: #c2362b;
+  --grey: #8a867e;
+
+  --display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+
+  --topbar-h: 56px;
+  --gutter: 18px;
+  --radius: 3px;
+  --focus: var(--signal);
+
+  /* Fine dark specks for paper surfaces (feTurbulence). */
+  --tex-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .07 0 0 0 0 .07 0 0 0 0 .07 0 0 0 .34 -.12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Faint light specks for the night wall. */
+  --tex-wall: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .92 0 0 0 0 .87 0 0 0 .16 -.06'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* Wood grain: two drifting ink hairlines per tile. */
+  --tex-wood: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='28'%3E%3Cpath d='M0 7 C80 3 160 11 320 7 M0 20 C90 24 200 16 320 20' fill='none' stroke='%23121212' stroke-opacity='.38' stroke-width='1.2'/%3E%3C/svg%3E");
+  /* Diagonal hatching for empty or unavailable things. */
+  --tex-hatch: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M-2 2 L2 -2 M0 8 L8 0 M6 10 L10 6' stroke='%23121212' stroke-opacity='.5' stroke-width='1.4'/%3E%3C/svg%3E");
+  --tex-hatch-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M-2 2 L2 -2 M0 8 L8 0 M6 10 L10 6' stroke='%23F2EBDD' stroke-opacity='.28' stroke-width='1.2'/%3E%3C/svg%3E");
+  /* Roller shutter slats. */
+  --tex-slats: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='24'%3E%3Crect width='40' height='24' fill='%233A2A1E'/%3E%3Cpath d='M0 1 H40' stroke='%23121212' stroke-width='2'/%3E%3Cpath d='M0 4.5 H40' stroke='%238A867E' stroke-opacity='.55' stroke-width='1'/%3E%3Cpath d='M0 15 H40' stroke='%23121212' stroke-opacity='.4' stroke-width='1'/%3E%3C/svg%3E");
+}

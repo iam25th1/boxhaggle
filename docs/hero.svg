@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="title desc">
+  <title id="title">BOXHAGGLE: The Broker's Counter</title>
+  <desc id="desc">The Broker, a drawn merchant, blinks behind a late-night trading counter while a lit fuse burns along the counter edge and the price board shows the ask.</desc>
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0.95  0 0 0 0 0.92  0 0 0 0 0.87  0 0 0 0.07 0"/>
+    </filter>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+      <rect width="8" height="8" fill="#3A2A1E"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#121212" stroke-width="2" opacity="0.35"/>
+    </pattern>
+    <style>
+      .eye { transform-box: fill-box; transform-origin: center; animation: blink 5.2s infinite; }
+      .brow { transform-box: fill-box; transform-origin: center; animation: brow 5.2s infinite; }
+      .fuse-lit { stroke-dasharray: 760; stroke-dashoffset: 0; animation: burn 14s linear infinite; }
+      .spark { offset-path: path("M 120 300 L 880 300"); offset-rotate: 0deg; animation: travel 14s linear infinite; }
+      .spark-glow { transform-box: fill-box; transform-origin: center; animation: glow 1.4s ease-in-out infinite; }
+      .flap { transform-box: fill-box; transform-origin: center; animation: flap 7s infinite; }
+      @keyframes blink { 0%, 44%, 50%, 100% { transform: scaleY(1); } 47% { transform: scaleY(0.08); } }
+      @keyframes brow { 0%, 60%, 100% { transform: translateY(0); } 70%, 82% { transform: translateY(-5px); } }
+      @keyframes burn { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 760; } }
+      @keyframes travel { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+      @keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+      @keyframes flap { 0%, 88%, 100% { transform: scaleY(1); } 92% { transform: scaleY(0.1); } }
+      @media (prefers-reduced-motion: reduce) {
+        .eye, .brow, .fuse-lit, .spark, .spark-glow, .flap { animation: none; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="420" fill="#121212"/>
+  <rect width="1200" height="420" filter="url(#grain)"/>
+
+  <!-- price board -->
+  <g transform="translate(760 46)">
+    <rect width="380" height="120" rx="6" fill="#121212" stroke="#8A867E" stroke-width="2"/>
+    <text x="22" y="34" fill="#8A867E" font-family="'JetBrains Mono', Consolas, monospace" font-size="16" letter-spacing="3">THE ASK</text>
+    <g font-family="Impact, 'Arial Narrow Bold', 'Arial Narrow', sans-serif" font-size="58" fill="#F2EBDD">
+      <rect x="22" y="46" width="56" height="62" rx="4" fill="#3A2A1E"/>
+      <text x="36" y="100">$</text>
+      <rect x="86" y="46" width="56" height="62" rx="4" fill="#3A2A1E"/>
+      <text x="102" y="100">1</text>
+      <rect x="150" y="46" width="22" height="62" rx="4" fill="#3A2A1E"/>
+      <text x="155" y="100">.</text>
+      <g class="flap"><rect x="180" y="46" width="56" height="62" rx="4" fill="#3A2A1E"/><text x="194" y="100">4</text></g>
+      <rect x="244" y="46" width="56" height="62" rx="4" fill="#3A2A1E"/>
+      <text x="258" y="100">6</text>
+    </g>
+    <line x1="22" y1="77" x2="300" y2="77" stroke="#121212" stroke-width="2"/>
+    <text x="316" y="100" fill="#1F7A4D" font-family="'JetBrains Mono', Consolas, monospace" font-size="16">USDC</text>
+  </g>
+
+  <!-- title -->
+  <text x="60" y="96" fill="#F2EBDD" font-family="Impact, 'Arial Narrow Bold', 'Arial Narrow', sans-serif" font-size="88" letter-spacing="4">BOXHAGGLE</text>
+  <g fill="#8A867E" font-family="'JetBrains Mono', Consolas, monospace" font-size="15" letter-spacing="1.5">
+    <text x="64" y="132">EVERY COUNTER-OFFER IS A PAID x402 CALL.</text>
+    <text x="64" y="156">THE DEAL SETTLES THROUGH PAYBOX.</text>
+  </g>
+
+  <!-- the Broker -->
+  <g transform="translate(560 140)">
+    <rect x="-70" y="120" width="220" height="80" rx="24" fill="#8A867E"/>
+    <rect x="-40" y="120" width="160" height="34" fill="#F2EBDD"/>
+    <path d="M 40 120 L 26 168 L 40 182 L 54 168 Z" fill="#C2362B"/>
+    <circle cx="40" cy="58" r="76" fill="#F2EBDD"/>
+    <path d="M -36 30 Q 40 -40 116 30 L 116 4 Q 40 -70 -36 4 Z" fill="#121212"/>
+    <g class="brow">
+      <rect x="-6" y="24" width="34" height="8" rx="4" fill="#121212"/>
+      <rect x="52" y="24" width="34" height="8" rx="4" fill="#121212"/>
+    </g>
+    <ellipse class="eye" cx="11" cy="52" rx="9" ry="11" fill="#121212"/>
+    <ellipse class="eye" cx="69" cy="52" rx="9" ry="11" fill="#121212"/>
+    <path d="M 40 60 L 32 84 L 46 84" fill="none" stroke="#8A867E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 14 104 Q 40 116 66 102" fill="none" stroke="#121212" stroke-width="6" stroke-linecap="round"/>
+    <path d="M 4 92 Q 40 108 76 92 L 76 98 Q 40 114 4 98 Z" fill="#121212"/>
+  </g>
+
+  <!-- counter -->
+  <rect x="0" y="300" width="1200" height="120" fill="url(#hatch)"/>
+  <rect x="0" y="296" width="1200" height="8" fill="#121212"/>
+
+  <!-- hands on the counter -->
+  <g fill="#F2EBDD">
+    <rect x="490" y="282" width="58" height="26" rx="12"/>
+    <rect x="652" y="282" width="58" height="26" rx="12"/>
+  </g>
+
+  <!-- receipt ticket -->
+  <g transform="translate(70 318)">
+    <rect width="190" height="80" fill="#F2EBDD"/>
+    <g font-family="'JetBrains Mono', Consolas, monospace" font-size="13" fill="#121212">
+      <text x="12" y="22">ROUND 07   x402</text>
+      <text x="12" y="42">OFFER      $1.46</text>
+      <text x="12" y="62">FEE        $0.01</text>
+    </g>
+    <rect x="120" y="50" width="62" height="24" fill="none" stroke="#1F7A4D" stroke-width="3" transform="rotate(-8 151 62)"/>
+    <text x="126" y="68" fill="#1F7A4D" font-family="Impact, 'Arial Narrow', sans-serif" font-size="16" transform="rotate(-8 151 62)">CLEARED</text>
+  </g>
+
+  <!-- coins in the tray -->
+  <g transform="translate(980 318)">
+    <rect width="170" height="60" rx="8" fill="#121212" stroke="#8A867E" stroke-width="2"/>
+    <g fill="#FF5A1F" stroke="#121212" stroke-width="2">
+      <ellipse cx="40" cy="44" rx="20" ry="7"/>
+      <ellipse cx="40" cy="38" rx="20" ry="7"/>
+      <ellipse cx="40" cy="32" rx="20" ry="7"/>
+      <ellipse cx="88" cy="44" rx="20" ry="7"/>
+      <ellipse cx="88" cy="38" rx="20" ry="7"/>
+      <ellipse cx="134" cy="44" rx="20" ry="7"/>
+    </g>
+  </g>
+
+  <!-- patience fuse -->
+  <path d="M 120 300 L 880 300" stroke="#8A867E" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+  <path class="fuse-lit" d="M 880 300 L 120 300" stroke="#FF5A1F" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <g class="spark">
+    <g class="spark-glow">
+      <circle r="9" fill="#FF5A1F"/>
+      <circle r="4" fill="#F2EBDD"/>
+    </g>
+  </g>
+  <text x="890" y="292" fill="#8A867E" font-family="'JetBrains Mono', Consolas, monospace" font-size="13" letter-spacing="2">PATIENCE</text>
+</svg>

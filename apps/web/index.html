@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BOXHAGGLE</title>
+    <meta name="description" content="Watch an AI agent haggle with The Broker. Every counter-offer is a paid x402 call; the purchase settles through PayBox." />
+    <meta name="theme-color" content="#121212" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121212'/%3E%3Crect x='5' y='9' width='22' height='16' fill='%23FF5A1F'/%3E%3Crect x='5' y='15' width='22' height='2' fill='%23121212'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the counter</a>
+
+    <header class="topbar" id="topbar">
+      <p class="wordmark" aria-label="BOXHAGGLE">BOX<span>HAGGLE</span></p>
+      <p class="mode-badge" id="mode-badge" data-mode="replay">Replay</p>
+      <p class="run-meta" id="run-meta" aria-live="off"></p>
+      <p class="link-state" id="link-state" hidden></p>
+      <div class="controls" id="controls" role="group" aria-label="Playback">
+        <button type="button" class="ctl" id="btn-follow" hidden>Watch newest session</button>
+        <button type="button" class="ctl" id="btn-pause" aria-pressed="false" aria-keyshortcuts="Space" disabled>
+          <span class="ctl-label">Pause</span><kbd>Space</kbd>
+        </button>
+        <button type="button" class="ctl" id="btn-speed" aria-pressed="false" disabled>Speed 1x</button>
+        <button type="button" class="ctl" id="btn-sound" aria-pressed="false">Sound off</button>
+        <button type="button" class="ctl" id="btn-exit" hidden>Leave the counter</button>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="screen screen-load" id="screen-load" aria-label="Loading">
+        <div class="shutter" id="shutter">
+          <div class="shutter-slats" aria-hidden="true"></div>
+          <div class="shutter-plate">
+            <p class="shutter-word">BOXHAGGLE</p>
+            <p class="shutter-note" role="status">Opening the counter</p>
+          </div>
+          <span class="shutter-handle" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <section class="screen screen-title" id="screen-title" aria-labelledby="title-heading" hidden>
+        <div class="title-wrap">
+          <h1 id="title-heading" class="sr-only">BOXHAGGLE</h1>
+          <div class="title-board" id="title-board"></div>
+          <p class="title-lede">
+            An AI agent haggles with The Broker, a merchant with a hidden floor price and a short fuse.
+            Every counter-offer is a paid x402 call in USDC. The purchase settles through PayBox, so the agent never holds a key or a card.
+          </p>
+          <fieldset class="mode-pick">
+            <legend>How to watch</legend>
+            <label class="mode-opt">
+              <input type="radio" name="mode" value="replay" checked />
+              <span class="mode-name">Replay</span>
+              <span class="mode-desc">A full run built in your browser from the real game rules, the real Broker and a real SHA-256 commitment.</span>
+            </label>
+            <label class="mode-opt">
+              <input type="radio" name="mode" value="live" id="mode-live" />
+              <span class="mode-name">Live</span>
+              <span class="mode-desc">Follow an agent at the merchant's counter right now.</span>
+            </label>
+          </fieldset>
+          <p class="live-note" id="live-note" hidden></p>
+          <button type="button" class="btn btn-signal btn-xl" id="btn-enter">Step up to the counter</button>
+        </div>
+      </section>
+
+      <section class="screen screen-select" id="screen-select" aria-labelledby="select-heading" hidden>
+        <div class="select-wrap">
+          <h1 id="select-heading" class="select-heading" tabindex="-1">Pick what the agent haggles for</h1>
+          <p class="select-sub" id="select-sub">The Broker draws a hidden floor for it and seals the number before the first offer.</p>
+          <ul class="shelf" id="shelf"></ul>
+          <p class="lobby-state" id="lobby-state" role="status"></p>
+          <button type="button" class="btn btn-ghost" id="btn-back">Back</button>
+        </div>
+      </section>
+
+      <section class="screen screen-stage" id="screen-stage" aria-labelledby="stage-heading" hidden>
+        <h1 id="stage-heading" class="sr-only" tabindex="-1">The Broker's counter</h1>
+        <div class="stage" id="stage" data-mood="calm">
+          <div class="col col-left" id="col-left"></div>
+          <div class="col col-center" id="col-center">
+            <div class="backwall">
+              <div class="item-frame" id="item-frame"></div>
+              <div id="board-mount" class="board-mount"></div>
+            </div>
+            <div class="broker-zone" id="broker-zone">
+              <div class="broker-mount" id="broker-mount"></div>
+              <div class="speech-mount" id="speech-mount"></div>
+              <div class="tray-mount" id="tray-mount"></div>
+              <div class="printer-mount" id="printer-mount"></div>
+            </div>
+          </div>
+          <div class="col col-right" id="col-right"></div>
+          <div class="counter" id="counter">
+            <div class="fuse-mount" id="fuse-mount"></div>
+            <div class="counter-front">
+              <p class="plaque" id="rail-tag">Rails: waiting</p>
+              <p class="plaque plaque-seal" id="seal-tag">Floor not sealed yet</p>
+              <p class="plaque plaque-mode" id="counter-mode">Replay</p>
+            </div>
+          </div>
+          <div class="settle" id="settle" hidden>
+            <div class="settle-scrim" aria-hidden="true"></div>
+            <div class="settle-grid">
+              <div class="settle-slot slot-stmt" id="stmt-mount"></div>
+              <div class="settle-slot slot-reveal" id="reveal-mount"></div>
+              <div class="settle-slot slot-score" id="score-mount"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="sr-only" id="broker-live" aria-live="polite"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
